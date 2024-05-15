@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
@@ -21,8 +22,12 @@ use App\Http\Controllers\EmployeeController;
 //});
 //Route::middleware('auth:sanctum')->get('/users', [EmployeeController::class, 'index']);
 //Route::get('/employees', [EmployeeController::class, 'index']);
+Route::get('login', [RegisterController::class, 'login']);
+Route::get('logout', [RegisterController::class,'logout']);
+
 Route::middleware('auth:api')->group( function () {
     Route::resource('employees', EmployeeController::class);
+    Route::get('employee-list', [EmployeeController::class,'employeeDetails']);
 });
 
 

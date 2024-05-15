@@ -5109,7 +5109,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/employees');
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('employee-list');
             case 3:
               response = _context.sent;
               _this.employees = response.data;

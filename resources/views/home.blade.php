@@ -19,17 +19,19 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mb-3">
+        <div class="row justify-content-end mb-3">
             <div class="col-md-8">
                 <div class="btn-group" role="group" aria-label="Add">
                     <!-- Add Company Button -->
                     <a href="{{ route('companies.create') }}" class="btn btn-primary">{{ __('Add Company') }}</a>
-
+                </div>
+                <div class="btn-group ml-2" role="group" aria-label="Add">
                     <!-- Add Employee Button -->
                     <a href="{{ route('employees.create') }}" class="btn btn-primary">{{ __('Add Employee') }}</a>
                 </div>
             </div>
         </div>
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div id="app">

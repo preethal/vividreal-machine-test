@@ -48,7 +48,7 @@ export default {
     // }
     async fetchEmployees() {
       try {
-        const response = await axios.get('/api/employees');
+        const response = await axios.get('employee-list');
         this.employees = response.data;
       } catch (error) {
         console.error('Error fetching employees:', error);

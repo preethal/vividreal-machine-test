@@ -89,4 +89,10 @@ class EmployeeController extends Controller
     {
         //
     }
+
+    public function employeeDetails()
+    {
+        $employees = Employee::with('companyData')->get();
+        return response()->json($employees);
+    }
 }
