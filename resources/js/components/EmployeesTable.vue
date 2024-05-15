@@ -38,6 +38,14 @@ export default {
     this.fetchEmployees();
   },
   methods: {
+    // async fetchEmployees() {
+    //   try {
+    //     const response = await axios.get('/api/employees');
+    //     this.employees = response.data;
+    //   } catch (error) {
+    //     console.error('Error fetching employees:', error);
+    //   }
+    // }
     async fetchEmployees() {
       try {
         const response = await axios.get('/api/employees');
@@ -46,6 +54,7 @@ export default {
         console.error('Error fetching employees:', error);
       }
     }
+
   }
 };
 </script>
