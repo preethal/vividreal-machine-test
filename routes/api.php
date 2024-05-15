@@ -19,5 +19,7 @@ use App\Http\Controllers\EmployeeController;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-Route::middleware('auth:sanctum')->get('/users', [EmployeeController::class, 'index']);
+//Route::middleware('auth:sanctum')->get('/users', [EmployeeController::class, 'index']);
+Route::middleware('auth:sanctum')->get('/employees', [EmployeeController::class, 'index']);
+
 

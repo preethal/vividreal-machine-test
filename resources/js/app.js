@@ -1,11 +1,13 @@
 require('./bootstrap');
-// resources/js/app.js
-
 import Vue from 'vue';
-import AddEmployeeForm from './components/AddEmployeeForm.vue';
 
-Vue.component('add-employee-form', AddEmployeeForm);
+// Import the EmployeesTable component using the @ alias
+import EmployeesTable from './components/EmployeesTable';
 
-const app = new Vue({
-    el: '#app'
+// Register the EmployeesTable component globally
+Vue.component('employees-table', EmployeesTable);
+
+// Create the Vue instance
+new Vue({
+    el: '#app',
 });

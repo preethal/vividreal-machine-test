@@ -32,31 +32,11 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <table id="companies-table" class="table">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Logo</th>
-                        <th>Website</th>
-                    </tr>
-                    </thead>
-                </table>
+                <div id="app">
+                    <employees-table></employees-table>
+                </div>
             </div>
         </div>
     </div>
-<script>
-    $(function() {
-        $('#companies-table').DataTable({
-            processing: true,
-            serverSide: true,
-            columns: [
-                { data: 'name', name: 'name' },
-                { data: 'email', name: 'email' },
-                { data: 'logo', name: 'logo' },
-                { data: 'website', name: 'website' }
-            ]
-        });
-    });
-</script>s
+    <script src="{{ asset('js/app.js') }}"></script>
 @endsection

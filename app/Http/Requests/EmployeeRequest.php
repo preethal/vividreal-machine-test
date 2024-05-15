@@ -13,7 +13,7 @@ class EmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class EmployeeRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'company_id' => 'required|exists:companies,id',
+         //   'company_id' => 'required|exists:companies,id',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:20',
         ];

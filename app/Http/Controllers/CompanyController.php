@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
+use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -13,7 +16,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        // Fetch all companies and employees from the database
+        $employees = Employee::all();
+        return view('home', compact('employees'));
     }
 
     /**
@@ -23,7 +28,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-company');
     }
 
     /**
@@ -34,7 +39,14 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->all();
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $logoPath = $logo->store('public/logos'); // Store in storage/app/public/logos
+            $validatedData['logo'] = $logoPath;
+        }
+        $company = Company::create($validatedData);
+        return redirect()->route('companies.index')->with('success', 'Company added successfully.');
     }
 
     /**
