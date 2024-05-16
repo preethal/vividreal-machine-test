@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Created by preethal(May 15 2024)
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -39,7 +39,6 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-      //  dd($request->all());
         $employee = new Employee();
         $employee->fill($request->validated());
         $employee->save();
@@ -80,8 +79,21 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $employee = Employee::findOrFail($id); // Retrieve the employee or throw a 404 error if not found
-        return response()->json($employee);
-    }
+        $input = $request->all();
+        $employee->first_name = $input['first_name'];
+        $employee->last_name = $input['last_name'];
+        $employee->company_id = $input['company_id'];
+        $employee->email = $input['email'];
+        $employee->phone = $input['phone'];
+        $employee->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Employee updated successfully.',
+            'employee' => $employee
+        ]);
+
+}
 
     /**
      * Remove the specified resource from storage.
@@ -93,12 +105,27 @@ class EmployeeController extends Controller
     {
     $employee = Employee::findOrFail($id);
     $employee->delete();
-    return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
-    }
+        return response()->json([
+            'success' => true,
+            'message' => 'Deleted successfully.',
+            'employee' => $employee
+        ]);    }
 
     public function employeeDetails()
     {
         $employees = Employee::with('companyData')->get();
         return response()->json($employees);
     }
+    public function addEmployee(EmployeeRequest $request)
+    {
+        $employee = new Employee();
+        $employee->fill($request->validated());
+        $employee->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Employee added successfully.',
+            'employee' => $employee
+        ]);    }
+
+
 }

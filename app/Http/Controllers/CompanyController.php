@@ -11,7 +11,7 @@ class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Created by preethal(May 15 2024)
      * @return \Illuminate\Http\Response
      */
     public function index()

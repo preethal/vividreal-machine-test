@@ -28,6 +28,7 @@ Route::get('logout', [RegisterController::class,'logout']);
 Route::middleware('auth:api')->group( function () {
     Route::resource('employees', EmployeeController::class);
     Route::get('employee-list', [EmployeeController::class,'employeeDetails']);
+    Route::post('add-employee', [EmployeeController::class,'addEmployee']);
 });
 
 
