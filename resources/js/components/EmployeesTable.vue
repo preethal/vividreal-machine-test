@@ -5,6 +5,7 @@
       <tr>
         <th>Employee Name</th>
         <th>Employee Email</th>
+        <th>Phone</th>
         <th>Company Name</th>
         <th>Logo</th>
         <th>Website</th>
@@ -14,11 +15,12 @@
       <tr v-for="employee in employees" :key="employee.id">
         <td>{{ employee.first_name }} {{ employee.last_name }}</td>
         <td>{{ employee.email }}</td>
-        <td>{{ employee.companyData.name }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>{{ employee.company_data.name }}</td>
         <td>
-          <img :src="employee.companyData.logo" alt="Company Logo" width="50">
+          <img :src="`/storage/${employee.company_data.logo}`" alt="Company Logo" width="50">
         </td>
-        <td>{{ employee.companyData.website }}</td>
+        <td>{{ employee.company_data.website }}</td>
       </tr>
       </tbody>
     </table>
@@ -50,6 +52,7 @@ export default {
       try {
         const response = await axios.get('employee-list');
         this.employees = response.data;
+        console.log("this.employees",this.employees)
       } catch (error) {
         console.error('Error fetching employees:', error);
       }

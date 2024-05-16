@@ -5113,17 +5113,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context.sent;
               _this.employees = response.data;
-              _context.next = 10;
+              console.log("this.employees", _this.employees);
+              _context.next = 11;
               break;
-            case 7:
-              _context.prev = 7;
+            case 8:
+              _context.prev = 8;
               _context.t0 = _context["catch"](0);
               console.error('Error fetching employees:', _context.t0);
-            case 10:
+            case 11:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 8]]);
       }))();
     }
   }
@@ -5154,19 +5155,19 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.employees, function (employee) {
     return _c("tr", {
       key: employee.id
-    }, [_c("td", [_vm._v(_vm._s(employee.first_name) + " " + _vm._s(employee.last_name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.companyData.name))]), _vm._v(" "), _c("td", [_c("img", {
+    }, [_c("td", [_vm._v(_vm._s(employee.first_name) + " " + _vm._s(employee.last_name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.phone))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.company_data.name))]), _vm._v(" "), _c("td", [_c("img", {
       attrs: {
-        src: employee.companyData.logo,
+        src: "/storage/".concat(employee.company_data.logo),
         alt: "Company Logo",
         width: "50"
       }
-    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.companyData.website))])]);
+    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(employee.company_data.website))])]);
   }), 0)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("Employee Name")]), _vm._v(" "), _c("th", [_vm._v("Employee Email")]), _vm._v(" "), _c("th", [_vm._v("Company Name")]), _vm._v(" "), _c("th", [_vm._v("Logo")]), _vm._v(" "), _c("th", [_vm._v("Website")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("Employee Name")]), _vm._v(" "), _c("th", [_vm._v("Employee Email")]), _vm._v(" "), _c("th", [_vm._v("Phone")]), _vm._v(" "), _c("th", [_vm._v("Company Name")]), _vm._v(" "), _c("th", [_vm._v("Logo")]), _vm._v(" "), _c("th", [_vm._v("Website")])])]);
 }];
 render._withStripped = true;
 

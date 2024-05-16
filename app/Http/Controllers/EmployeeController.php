@@ -39,6 +39,7 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
+      //  dd($request->all());
         $employee = new Employee();
         $employee->fill($request->validated());
         $employee->save();
@@ -64,7 +65,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        return response()->json($employee);
+
     }
 
     /**
@@ -76,7 +79,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $employee = Employee::findOrFail($id); // Retrieve the employee or throw a 404 error if not found
+        return response()->json($employee);
     }
 
     /**
@@ -87,7 +91,9 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+    $employee = Employee::findOrFail($id);
+    $employee->delete();
+    return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
 
     public function employeeDetails()
